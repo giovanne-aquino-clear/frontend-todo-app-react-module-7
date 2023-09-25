@@ -1,9 +1,10 @@
 import React from "react";
-
 import Grid from "../template/grid,";
 import IconButton from "../template/iconButton";
+import { connect } from "react-redux";
 
-export default props =>(
+const TodoForm = props =>{
+    return(
     <div role= 'form' className='todoForm'>
         <Grid col='12 9 10'>
             <input id='description' className="form-control"
@@ -21,5 +22,8 @@ export default props =>(
                         onClick={props.handleClear} />
         </Grid>
     </div>
-
 )
+}
+
+const mapStateToProps = state => ({description: state.todo.description})
+export default connect (mapStateToProps)(TodoForm)
